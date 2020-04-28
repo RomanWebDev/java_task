@@ -1,0 +1,8 @@
+.body {
+    position: relative;
+}
+.container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}

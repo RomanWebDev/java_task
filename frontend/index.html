@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO List: Spring + Vue.JS</title>
+    <link rel="stylesheet" href="dist/style.css">
+    <link rel="stylesheet" href="dist/spectre.min.css">
+    <link rel="stylesheet" href="dist/spectre-icons.min.css">
+    <link rel="stylesheet" href="dist/spectre-exp.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="columns">
+            <div class="column col-3 col-mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <div v-if="tasks.length">
+                            <tasks class="tile tile-centered" @task_done="task_update(data)"  @task_delete="delete_task(data.id, index)" :data="data" v-for="(data, index) in tasks" :key="index"></tasks>
+                        </div>
+                        <div v-else>
+                            <div class="empty">
+                            <div class="empty-icon">
+                              <i class="icon icon-plus"></i>
+                            </div>
+                            <p class="empty-title h5">Упс. У вас пока нету задач!</p>
+                            <p class="empty-subtitle">Дайте название и описание своей задаче и нажмите добавить!</p>
+                          </div>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="form-group">
+                            <input class="form-input" type="text" v-model="title" placeholder="Название задачи...">
+                        </div>
+                        <div class="form-group">
+                            <textarea v-model="description" class="form-input" id="input-example-3" placeholder="Описание задачи..." rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button @click="task_add()" class="btn btn-primary">Добавить</button>
+                            <button @click="delete_all()" v-if="tasks.length" class="btn btn-error">Удалить все</button>
+                            <button @click="done_all()" v-if="tasks.length" class="btn">Выполнить все</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="dist/app.js"></script>
+</html>

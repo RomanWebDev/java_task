@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: task_product
+      MYSQL_USER: task_controller_user
+      MYSQL_PASSWORD: task_controller_password
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - .\database:/var/lib/mysql
+    networks:
+      - backend533
+
+networks:
+  backend52352:
